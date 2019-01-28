@@ -1,0 +1,124 @@
+package {{.PackageName}}
+
+import (
+	"errors"
+	"{{.ImportName}}"
+	"github.com/jinzhu/gorm"
+	"github.com/koalaone/model_auto/mysql"
+)
+
+type {{.ExportModelName}} struct {
+{{range .TableSchema}} {{.ColumnName | ExportColumn}} {{.DataType | TypeConvert}} {{.ColumnName | Tags}} // {{.ColumnComment}}
+{{end}}}
+
+var {{.ExportModelName}}Real = &{{.ExportModelName}}{}
+
+func (t *{{.ExportModelName}}) TableName() string {
+	return "{{.TableName}}"
+}
+
+func Get{{ .ExportModelName}}ByWheres(wheres map[string]interface{}) (*{{ .ExportModelName}}, error) {
+	if len(wheres) == 0 {
+		return nil, errors.New("param[wheres] length is zero")
+	}
+
+	var object {{ .ExportModelName}}
+	var resultObjs []{{ .ExportModelName}}
+	err := mysql.SearchObject(&object, wheres, &resultObjs)
+	if err != nil {
+		if err == gorm.ErrRecordNotFound {
+        	return nil, nil
+        }
+
+		return nil, err
+	}
+
+	if len(resultObjs) == 0 {
+		return nil, nil
+	}
+
+	resultObj := resultObjs[0]
+	if err != nil {
+		return nil, err
+	}
+
+	return &resultObj, nil
+}
+
+func Get{{ .ExportModelName}}MultiByWheres(wheres map[string]interface{}) ([]{{ .ExportModelName}}, error) {
+	if len(wheres) == 0 {
+		return nil, errors.New("param[wheres] length is zero")
+	}
+
+	var object {{ .ExportModelName}}
+	var resultObjs []{{ .ExportModelName}}
+	err := mysql.SearchObject(&object, wheres, &resultObjs)
+	if err != nil {
+		if err == gorm.ErrRecordNotFound {
+            return nil, nil
+        }
+		return nil, err
+	}
+
+	return resultObjs, nil
+}
+
+func Get{{ .ExportModelName}}MultiByInWheresLimit(wheres, ins map[string]interface{}, orders string,
+	limit, offset int) ([]{{ .ExportModelName}}, error) {
+
+	if limit < 0 {
+		return nil, errors.New("param[limit] less than zero")
+	}
+
+	if offset < 0 {
+		return nil, errors.New("param[offset] less than zero")
+	}
+
+	var object {{ .ExportModelName}}
+	var resultObjs []{{ .ExportModelName}}
+
+	err := mysql.SearchObjectByOrder(&object, wheres, ins, orders, limit, offset, &resultObjs)
+	if err != nil {
+		if err == gorm.ErrRecordNotFound {
+            return nil, nil
+        }
+
+		return nil, err
+	}
+
+	if len(resultObjs) == 0 {
+		return nil, nil
+	}
+
+	return resultObjs, nil
+}
+
+func Create{{ .ExportModelName}}(value *{{ .ExportModelName}}) error {
+	if value == nil {
+		return errors.New("param[value] is nil")
+	}
+
+	err := mysql.CreateObject(value)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func Update{{ .ExportModelName}}(wheres, updates map[string]interface{}) error {
+	if len(wheres) == 0 {
+		return errors.New("param[wheres] length is zero")
+	}
+	if len(updates) == 0 {
+		return errors.New("param[updates] length is zero")
+	}
+
+	var object {{ .ExportModelName}}
+	err := mysql.UpdateObject(&object, wheres, updates)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
