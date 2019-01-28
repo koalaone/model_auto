@@ -19,17 +19,17 @@ var (
 	sqlMode bool
 )
 
-func InitConnDB(dbConn string, dbType string) error {
-	if dbConn == "" {
-		return errors.New("param dbConn empty")
-	}
-
+func InitConnDB(dbType string, dbConn string) error {
 	if dbType == "" {
 		return errors.New("param dbType empty")
 	}
 
+	if dbConn == "" {
+		return errors.New("param dbConn empty")
+	}
+
 	var err error
-	instance, err = gorm.Open(dbConn, dbType)
+	instance, err = gorm.Open(dbType, dbConn)
 	if err != nil {
 		return err
 	}
