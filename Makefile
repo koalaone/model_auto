@@ -9,12 +9,6 @@ vgo:
 	vgo build
 
 
-.PHONY : install
-install:
-	@echo "GOPATH:"${GOPATH}
-	vgo install
-
-
 .PHONY : vendor
 vendor:
 	@echo "GOPATH:"${GOPATH}
@@ -25,3 +19,9 @@ vendor:
 build:
 	@echo "GOPATH:"${GOPATH}
 	go build -o ${APPNAME}
+
+
+.PHONY : install
+install:
+	@echo "GOPATH:"${GOPATH}
+	vgo install

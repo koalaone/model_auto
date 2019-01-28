@@ -6,13 +6,13 @@
     
     执行目录顺序如下:
     1、make vgo
-    
-    2、make install
-    
-    3、make vendor
-    
-    4、make build
-    
+        
+    2、make vendor
+        
+    3、make build
+        
+    4、make install
+        
     5、./model_auto -help
     
 ```shell

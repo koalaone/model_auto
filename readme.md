@@ -7,11 +7,11 @@
     Execute the command as follows:
     1、make vgo
     
-    2、make install
+    2、make vendor
     
-    3、make vendor
+    3、make build
     
-    4、make build
+    4、make install
     
     5、./model_auto -help
     
