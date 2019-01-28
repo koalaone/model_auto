@@ -44,3 +44,6 @@ GLOBAL OPTIONS:
 ```shell
 ./model_auto -import=github.com/model_auto/model -dbName=db_name -user=user_name -password=user_password -host=localhost -port=3306
 ```
+
+#### [应用示例](https://github.com/koalaone/model_auto_example)
+	https://github.com/koalaone/model_auto_example
