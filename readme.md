@@ -1,5 +1,5 @@
  ##model_auto [中文版](readme_cn.md)
- Secondary packaging based on GORM (https://github.com/jinzhu/gorm) library, Relatively simple operation on data table objects, including the commonly used Create, Get, Update operations (the CRUD operation of the database, generally delete uses soft delete.) 
+    Secondary packaging based on GORM (https://github.com/jinzhu/gorm) library, Relatively simple operation on data table objects, including the commonly used Create, Get, Update operations (the CRUD operation of the database, generally delete uses soft delete.) 
  
  ##Install
     Open file Makefile, change GOPATH param in your local "model_auto" path. 
