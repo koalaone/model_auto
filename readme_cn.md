@@ -1,7 +1,7 @@
- ##model_auto [English](readme.md)
- #####基于GORM（https://github.com/jinzhu/gorm）库的二次封装，对数据表对象操作相对简单，包括常用的Create，Get，Update操作（数据库的CRUD操作，一般删除使用软删除）。
+## model_auto [English](readme.md)
+##### 基于GORM（https://github.com/jinzhu/gorm）库的二次封装，对数据表对象操作相对简单，包括常用的Create，Get，Update操作（数据库的CRUD操作，一般删除使用软删除）。
 
- ##安装步骤
+## 安装步骤
     打开 Makefile 文件, 修改 GOPATH 参数为model_auto包的本地当前目录. 
     
     执行目录顺序如下:
