@@ -1,10 +1,10 @@
- ##model_auto [中文版](readme_cn.md)
- Secondary packaging based on GORM (https://github.com/jinzhu/gorm) library, Relatively simple operation on data table objects, including the commonly used Create, Get, Update operations (the CRUD operation of the database, generally delete uses soft delete.) 
- 
- ##Install
-    Open file Makefile, change GOPATH param in your local "model_auto" path. 
+ ##model_auto
+基于GORM（https://github.com/jinzhu/gorm）库的二次封装，对数据表对象操作相对简单，包括常用的Create，Get，Update操作（数据库的CRUD操作，一般删除使用软删除）。
+
+ ##安装步骤
+    打开 Makefile 文件, 修改 GOPATH 参数为model_auto包的本地当前目录. 
     
-    Execute the command as follows:
+    执行目录顺序如下:
     1、make vgo
     
     2、make install
@@ -40,10 +40,7 @@ GLOBAL OPTIONS:
    --version, -v      print the version
 ```
     
-#### model_auto command example:
+#### model_auto 命令示例:
 ```shell
 ./model_auto -import=github.com/model_auto/model -dbName=db_name -user=user_name -password=user_password -host=localhost -port=3306
 ```
-    
- 
-### 

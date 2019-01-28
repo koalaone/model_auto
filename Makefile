@@ -3,11 +3,6 @@ APPNAME=model_auto
 export GOPATH=/Users/kevinchen/Documents/Golang/koalaone/
 
 
-.PHONY : build
-build:
-	@echo "GOPATH:"${GOPATH}
-	go build -o ${APPNAME}
-
 .PHONY : vgo
 vgo:
 	@echo "GOPATH:"${GOPATH}
@@ -26,3 +21,7 @@ vendor:
 	vgo mod vendor
 
 
+.PHONY : build
+build:
+	@echo "GOPATH:"${GOPATH}
+	go build -o ${APPNAME}
