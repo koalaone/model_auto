@@ -6,7 +6,9 @@ export GOPATH=/Users/kevinchen/Documents/Golang/koalaone/
 .PHONY : vgo
 vgo:
 	@echo "GOPATH:"${GOPATH}
-	vgo build
+	vgo get -u
+    vgo clean
+    vgo build
 
 
 .PHONY : vendor
