@@ -114,7 +114,7 @@ type TableSchema struct {
 	ColumnName    string `db:"column_name" json:"column_name"`
 	DataType      string `db:"data_type" json:"data_type"`
 	ColumnKey     string `db:"column_key" json:"column_key"`
-	ColumnComment string `db:"column_comment", json:"column_comment"`
+	ColumnComment string `db:"column_comment" json:"column_comment"`
 }
 
 func genModelFile(render *template.Template, importName, tableName string) error {
