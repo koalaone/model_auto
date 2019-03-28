@@ -63,7 +63,7 @@ func ModelGenerate(importName, tableName string) error {
 		TableName string `json:"table_name"`
 	}
 	var tablaNames []TableInfo
-	err := instanceMysql.Raw(`SELECT table_name from tables where table_schema = ? `, DbName).Find(&tablaNames).Error
+	err := instanceMysql.Raw(`SELECT table_name as table_name from tables where table_schema = ? `, DbName).Find(&tablaNames).Error
 	if err != nil {
 		return err
 	}
@@ -123,7 +123,8 @@ func genModelFile(render *template.Template, importName, tableName string) error
 	}
 
 	var tableSchema []TableSchema
-	err := instanceMysql.Raw(`SELECT column_name, data_type,column_key,column_comment from COLUMNS `+
+	err := instanceMysql.Raw(`SELECT column_name as column_name, data_type as data_type,column_key as column_key,`+
+		`column_comment as column_comment from COLUMNS `+
 		` where TABLE_NAME= ? and table_schema = ? `, tableName, DbName).Find(&tableSchema).Error
 	if err != nil {
 		fmt.Println(err)
